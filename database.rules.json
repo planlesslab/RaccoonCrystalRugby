@@ -1,0 +1,36 @@
+{
+  "rules": {
+    "rooms": {
+      "$code": {
+        ".read": "auth != null",
+        ".write": "auth != null && ((!data.exists() && newData.child('hostId').val() === auth.uid) || (data.exists() && data.child('hostId').val() === auth.uid))",
+        ".validate": "$code.matches(/^[A-Z]{4}$/)",
+
+        "hostId": {
+          ".write": "auth != null && newData.val() === auth.uid && data.parent().child('players/' + auth.uid + '/online').val() === true && data.parent().child('players/' + data.val() + '/online').val() !== true"
+        },
+
+        "players": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && data.parent().parent().child('hostId').exists()",
+            "name": { ".validate": "newData.isString() && newData.val().length > 0 && newData.val().length <= 16" },
+            "team": { ".validate": "newData.val() === 'A' || newData.val() === 'B'" },
+            "input": { ".validate": "newData.val() === 'stick' || newData.val() === 'keys'" },
+            "online": { ".validate": "newData.isBoolean()" }
+          }
+        },
+
+        "pos": {
+          "$uid": {
+            ".write": "auth != null && auth.uid === $uid && data.parent().parent().child('status').val() === 'playing'",
+            ".validate": "newData.hasChildren(['x', 'y', 't'])",
+            "x": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1600" },
+            "y": { ".validate": "newData.isNumber() && newData.val() >= 0 && newData.val() <= 1000" },
+            "t": { ".validate": "newData.isNumber()" },
+            "$other": { ".validate": false }
+          }
+        }
+      }
+    }
+  }
+}

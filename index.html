@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="theme-color" content="#2a2170" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="description" content="Crystal Chaos is a fast 2 v 2 party game for phones and computers. Grab glowing crystals, steal them from the other team and defend your base for 30 frantic seconds." />
+  <title>Crystal Chaos – 2 v 2 Crystal-Stealing Party Game</title>
+  <meta property="og:title" content="Crystal Chaos – 2 v 2 Crystal-Stealing Party Game" />
+  <meta property="og:description" content="Grab glowing crystals, steal them from the other team and defend your base. 30 seconds, 4 players, total chaos." />
+  <meta property="og:image" content="https://planlesslab.github.io/Crystal-Chaos/docs/cover.jpg" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "VideoGame",
+    "name": "Crystal Chaos",
+    "description": "Crystal Chaos is a multiplayer team party game for 2 or 4 players. Two teams collect, steal and deliver glowing crystals to their base in a 30-second match.",
+    "genre": ["Party game", "Team game", "Action game"],
+    "gamePlatform": ["Mobile web browser", "Web browser"],
+    "playMode": "MultiPlayer",
+    "numberOfPlayers": { "@type": "QuantitativeValue", "minValue": 2, "maxValue": 4 },
+    "url": "https://planlesslab.github.io/Crystal-Chaos/",
+    "image": "https://planlesslab.github.io/Crystal-Chaos/docs/cover.jpg",
+    "publisher": { "@type": "Organization", "name": "Planless Lab" }
+  }
+  </script>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,4 84,46 50,96 16,46' fill='%238f7bff'/%3E%3Cpolygon points='50,4 84,46 50,46' fill='%237cc8ff'/%3E%3Cpolygon points='16,46 50,46 50,96' fill='%23d59cff'/%3E%3C/svg%3E" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700;800&display=swap">
+  <link rel="stylesheet" href="css/planless.css" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body data-view="home">
+<nav class="pl-nav" aria-label="Main"><div class="pl-in">
+  <a class="pl-brand" href="https://planlesslab.github.io/home/">Planless Lab</a>
+  <ul>
+    <li><a href="https://planlesslab.github.io/WeBringo/">WeBringo</a></li>
+    <li><a href="https://planlesslab.github.io/ChaoticParty/">ChaoticParty</a></li>
+    <li><a href="https://planlesslab.github.io/Bauble-Shake/">Bauble-Shake</a></li>
+    <li><a href="https://planlesslab.github.io/Crystal-Chaos/" aria-current="page">Crystal Chaos</a></li>
+  </ul>
+</div></nav>
+<script>
+  // On phones, scroll the nav so this page's link is visible.
+  (function () {
+    var cur = document.querySelector('.pl-nav a[aria-current="page"]');
+    var ul = cur && cur.closest("ul");
+    if (ul && ul.scrollWidth > ul.clientWidth) ul.scrollLeft = cur.parentNode.offsetLeft - ul.offsetLeft - 8;
+  })();
+</script>
+
+<header class="pl-head">
+  <a class="pl-back" href="https://planlesslab.github.io/home/">&larr; All projects</a>
+  <div class="pl-tags"><span class="pl-tag">Party game</span><span class="pl-tag">Team game</span></div>
+  <h1>Crystal Chaos</h1>
+  <p class="pl-sub">Grab it. Steal it. Guard it.</p>
+  <div class="pl-cols">
+    <div class="pl-desc">
+      <p>Crystal Chaos is a frantic 30-second team game. Two teams race for two glowing crystals, carry them home to their glowing tray, and raid the other side's base to steal them back.</p>
+      <p>Every delivery scores a point, and every crystal still in your base when the clock hits zero is worth 5 more. Play 1 v 1 or 2 v 2 on phones or computers.</p>
+    </div>
+    <div class="pl-facts">
+      <div class="pl-icon">
+        <img src="docs/icon.jpg" alt="A glowing faceted crystal floating above a glass pedestal" width="120" height="120">
+      </div>
+      <dl>
+        <div><dt>Category</dt><dd>Party games</dd></div>
+        <div><dt>Players</dt><dd>2 or 4 (1 v 1, 2 v 2)</dd></div>
+        <div><dt>Play format</dt><dd>Virtual, In-person, Hybrid</dd></div>
+        <div><dt>Device</dt><dd>Mobile / Web</dd></div>
+        <div><dt>Match length</dt><dd>30 seconds</dd></div>
+        <div><dt>Game type</dt><dd>Competitive / Team</dd></div>
+      </dl>
+    </div>
+  </div>
+</header>
+
+  <!-- Scenery: ribbed glass room with floating glass bubbles and lasers (decorative) -->
+  <div class="scene" aria-hidden="true">
+    <div class="panel panel-left"></div>
+    <div class="panel panel-right"></div>
+    <div class="laser l1"></div><div class="laser l2"></div><div class="laser l3"></div>
+    <div class="bubble b1"></div><div class="bubble b2"></div><div class="bubble b3"></div>
+    <div class="block k1"></div><div class="block k2"></div>
+    <div class="floor"></div>
+    <div class="sparkles"></div>
+  </div>
+
+  <div id="mode-banner" class="banner" hidden></div>
+
+  <main id="app">
+    <!-- HOME -->
+    <section id="view-home" class="view">
+      <div class="logo-wrap">
+        <svg class="logo-gem" viewBox="0 0 100 130" aria-hidden="true">
+          <defs>
+            <linearGradient id="gemA" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e8f4ff"/><stop offset="1" stop-color="#8f7bff"/></linearGradient>
+          </defs>
+          <polygon points="50,2 92,62 50,128 8,62" fill="url(#gemA)"/>
+          <polygon points="50,2 92,62 56,56" fill="#7cc8ff" opacity=".85"/>
+          <polygon points="50,2 56,56 30,34" fill="#ffffff" opacity=".85"/>
+          <polygon points="8,62 30,34 56,56" fill="#d59cff" opacity=".8"/>
+          <polygon points="8,62 56,56 50,128" fill="#8f7bff" opacity=".85"/>
+          <polygon points="56,56 92,62 50,128" fill="#5aa9ff" opacity=".8"/>
+          <polygon points="50,2 92,62 50,128 8,62" fill="none" stroke="#fff" stroke-width="2.5" stroke-linejoin="round"/>
+        </svg>
+        <h1 class="logo">Crystal<br /><span>Chaos</span></h1>
+      </div>
+      <p class="tagline">Grab it. Steal it. Guard it. 30 seconds of 2 v 2 mayhem.</p>
+      <div class="card">
+        <div id="invite-head" class="invite-head" hidden>
+          <p class="eyebrow">Join room</p>
+          <div id="invite-code" class="room-code small"></div>
+        </div>
+        <label for="name-input">Your name</label>
+        <input id="name-input" maxlength="16" autocomplete="nickname" placeholder="e.g. Nova" />
+        <label>How will you move?</label>
+        <div class="choices compact">
+          <button type="button" id="home-stick" class="choice" aria-pressed="false">
+            <span class="choice-icon">🕹️</span><strong>Joystick</strong><small>Drag your thumb</small>
+          </button>
+          <button type="button" id="home-keys" class="choice" aria-pressed="false">
+            <span class="choice-icon">⌨️</span><strong>Keyboard</strong><small>WASD or arrows</small>
+          </button>
+        </div>
+        <button id="invite-join-btn" class="btn primary" hidden>Join the game</button>
+        <button id="create-btn" class="btn primary">Create a room</button>
+        <div id="join-divider" class="divider"><span>or join one</span></div>
+        <div id="join-row" class="row">
+          <input id="code-input" maxlength="4" placeholder="CODE" autocapitalize="characters" autocomplete="off" spellcheck="false" />
+          <button id="join-btn" class="btn">Join</button>
+        </div>
+        <p id="home-error" class="error" role="alert"></p>
+      </div>
+      <details class="card rules">
+        <summary>How to play</summary>
+        <ol>
+          <li><b>Collect:</b> run into a crystal to pick it up. You can carry one at a time.</li>
+          <li><b>Steal:</b> touch an opponent who's carrying one to take it instantly.</li>
+          <li><b>Deliver:</b> carry it into your team's glowing tray: <b>+1 point</b> and it turns your colour.</li>
+          <li><b>Raid:</b> crystals in a base aren't safe. Touch one in the other team's base to grab it.</li>
+          <li><b>Pass:</b> bump into your teammate to hand over your crystal.</li>
+        </ol>
+        <p class="note">When the 30 seconds are up, every crystal in your base is worth <b>+5</b>. Delivery points are never lost.</p>
+      </details>
+    </section>
+
+    <!-- LOBBY -->
+    <section id="view-lobby" class="view" hidden>
+      <div class="card lobby-card">
+        <p class="eyebrow">Room code</p>
+        <div id="room-code" class="room-code">----</div>
+        <div id="qr" class="qr"></div>
+        <button id="share-btn" class="btn small">Share invite link</button>
+        <p id="share-note" class="note"></p>
+      </div>
+
+      <div class="card">
+        <p class="eyebrow">Teams · <span id="player-count">0</span></p>
+        <div class="teams">
+          <div class="team" data-team="A">
+            <img class="team-thief" src="docs/thief-A.png" alt="Raccoon thief in a gold cap" width="360" height="336">
+            <h3>Gold</h3>
+            <ul id="team-A" class="player-list"></ul>
+          </div>
+          <div class="team" data-team="B">
+            <img class="team-thief" src="docs/thief-B.png" alt="Raccoon thief in a violet cap" width="360" height="336">
+            <h3>Violet</h3>
+            <ul id="team-B" class="player-list"></ul>
+          </div>
+        </div>
+        <button id="switch-team" class="btn small">Switch team</button>
+        <div class="controls-row">
+          <span class="eyebrow">Your controls</span>
+          <div class="seg">
+            <button id="lobby-stick" type="button">🕹️ Joystick</button>
+            <button id="lobby-keys" type="button">⌨️ Keyboard</button>
+          </div>
+        </div>
+        <button id="start-btn" class="btn primary" hidden disabled>Start game</button>
+        <p id="lobby-wait" class="note center">Waiting for the host to start…</p>
+      </div>
+      <button id="leave-btn" class="btn ghost">Leave room</button>
+    </section>
+
+    <!-- GAME -->
+    <section id="view-game" class="view game" hidden>
+      <div class="hud">
+        <div class="hud-score" data-team="A"><span class="hud-name">Gold</span><b id="score-A">0</b><small id="held-A"></small></div>
+        <div class="hud-time" id="hud-time">30</div>
+        <div class="hud-score" data-team="B"><small id="held-B"></small><b id="score-B">0</b><span class="hud-name">Violet</span></div>
+      </div>
+      <div class="arena-wrap"><canvas id="arena" aria-label="Arena"></canvas></div>
+      <div class="game-foot">
+        <span id="you-chip" class="you-chip"></span>
+        <span id="move-hint" class="move-hint">Drag anywhere to move</span>
+        <span id="spectate-msg" class="move-hint" hidden>Match in progress · you'll join next round</span>
+      </div>
+      <div id="stick" class="stick" hidden><div id="stick-knob" class="stick-knob"></div></div>
+      <div id="countdown" class="countdown" hidden></div>
+    </section>
+
+    <!-- RESULTS -->
+    <section id="view-results" class="view" hidden>
+      <div id="result-banner" class="result-banner">
+        <h2 id="result-title">Gold wins!</h2>
+        <p id="result-sub" class="note"></p>
+      </div>
+      <div class="final-scores">
+        <div id="card-A" class="final" data-team="A">
+          <span class="hud-name">Gold</span><b id="final-A">0</b><small id="break-A"></small>
+        </div>
+        <div id="card-B" class="final" data-team="B">
+          <span class="hud-name">Violet</span><b id="final-B">0</b><small id="break-B"></small>
+        </div>
+      </div>
+      <div class="card">
+        <p class="eyebrow">Players · 💎 deliveries · ⚡ steals · 🤝 passes</p>
+        <ol id="player-stats" class="stat-list"></ol>
+      </div>
+      <button id="again-btn" class="btn primary" hidden>Play again</button>
+      <p id="again-wait" class="note center">Waiting for the host…</p>
+      <button id="leave-btn-2" class="btn ghost">Leave room</button>
+    </section>
+  </main>
+
+  <footer class="pl-foot">
+    <p class="pl-suggest">Got an idea for a real-world experience? <a href="https://planlesslab.github.io/home/">Suggest an experience</a></p>
+    <p>Planless Lab · IRL Experience Lab</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js" defer></script>
+  <script type="module" src="js/main.js"></script>
+</body>
+</html>
