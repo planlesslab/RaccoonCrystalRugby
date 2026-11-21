@@ -32,28 +32,11 @@
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=Figtree:wght@400;500;600;700;800&display=swap">
   <link rel="stylesheet" href="css/planless.css" />
   <link rel="stylesheet" href="css/style.css" />
+  <script src="https://planlesslab.github.io/home/nav.js"></script>
 </head>
 <body data-view="home">
-<nav class="pl-nav" aria-label="Main"><div class="pl-in">
-  <a class="pl-brand" href="https://planlesslab.github.io/home/">Planless Lab</a>
-  <ul>
-    <li><a href="https://planlesslab.github.io/WeBringo/">WeBringo</a></li>
-    <li><a href="https://planlesslab.github.io/ChaoticParty/">ChaoticParty</a></li>
-    <li><a href="https://planlesslab.github.io/Bauble-Shake/">Bauble-Shake</a></li>
-    <li><a href="https://planlesslab.github.io/Crystal-Chaos/" aria-current="page">Crystal Chaos</a></li>
-  </ul>
-</div></nav>
-<script>
-  // On phones, scroll the nav so this page's link is visible.
-  (function () {
-    var cur = document.querySelector('.pl-nav a[aria-current="page"]');
-    var ul = cur && cur.closest("ul");
-    if (ul && ul.scrollWidth > ul.clientWidth) ul.scrollLeft = cur.parentNode.offsetLeft - ul.offsetLeft - 8;
-  })();
-</script>
 
 <header class="pl-head">
-  <a class="pl-back" href="https://planlesslab.github.io/home/">&larr; All projects</a>
   <div class="pl-tags"><span class="pl-tag">Party game</span><span class="pl-tag">Team game</span></div>
   <h1>Crystal Chaos</h1>
   <p class="pl-sub">Grab it. Steal it. Guard it.</p>
@@ -227,10 +210,6 @@
     </section>
   </main>
 
-  <footer class="pl-foot">
-    <p class="pl-suggest">Got an idea for a real-world experience? <a href="https://planlesslab.github.io/home/">Suggest an experience</a></p>
-    <p>Planless Lab · IRL Experience Lab</p>
-  </footer>
 
   <script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js" defer></script>
   <script type="module" src="js/main.js"></script>
