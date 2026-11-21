@@ -1,12 +1,9 @@
-// Paste your Firebase web config here (see README → "Set up Firebase").
-// Keep the word `export`. While apiKey still starts with "YOUR", the game
-// runs in local demo mode (tabs on one device only).
 export const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_PROJECT.firebaseapp.com",
-  databaseURL: "https://YOUR_PROJECT-default-rtdb.firebaseio.com",
-  projectId: "YOUR_PROJECT",
-  storageBucket: "YOUR_PROJECT.appspot.com",
-  messagingSenderId: "000000000000",
-  appId: "YOUR_APP_ID",
+  apiKey: "AIzaSyBjf3tmj5dwbXxNf5I_3-R_8Ov_FuSbeg8",
+  authDomain: "raccoon-crystal-rugby-4af59.firebaseapp.com",
+  projectId: "raccoon-crystal-rugby-4af59",
+  storageBucket: "raccoon-crystal-rugby-4af59.firebasestorage.app",
+  messagingSenderId: "1034262149656",
+  appId: "1:1034262149656:web:a26cbdc2987ac47d44616d",
+  measurementId: "G-K3GNYBMZEF"
 };
